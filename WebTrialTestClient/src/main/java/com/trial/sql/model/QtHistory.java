@@ -12,6 +12,7 @@ public class QtHistory {
 	private String answer3;
 	private String answer4;
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private int answerCount;
 	
 	public QtHistory(LocalDateTime timeStamp, int qtCode, int qtNo,String answer1, String answer2, String answer3, String answer4) {
 		super();		
@@ -22,6 +23,7 @@ public class QtHistory {
 		this.answer2 = answer2;
 		this.answer3 = answer3;
 		this.answer4 = answer4;
+		this.answerCount = setAnswerCount();
 	}
 
 	public String getTimeStamp() {
@@ -51,11 +53,30 @@ public class QtHistory {
 	public int getQtNo() {
 		return qtNo;
 	}
+	
+	public int getAnswerCount() {
+		return answerCount;
+	}
+
+	private int setAnswerCount() {
+		int i = 0;
+		if(answer1 != null) {
+			i++;
+		}if(answer2 != null) {
+			i++;
+		}if(answer3 != null) {
+			i++;
+		}if(answer4 != null) {
+			i++;
+		}
+		return i;
+	}
 
 	@Override
 	public String toString() {
 		return "QtHistory [timeStamp=" + timeStamp + ", qtCode=" + qtCode + ", qtNo=" + qtNo + ", answer1=" + answer1
-				+ ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + "]";
+				+ ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", answerCount="
+				+ answerCount + "]";
 	}
 
 }
