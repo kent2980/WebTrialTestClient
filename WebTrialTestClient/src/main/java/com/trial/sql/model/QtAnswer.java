@@ -16,10 +16,11 @@ public class QtAnswer implements Serializable{
 	private String answer2;
 	private String answer3;
 	private String answer4;
+	private int columns;
 	
 	public QtAnswer() {}
 
-	public QtAnswer(int id, int qtCode, String qtName, int qtNo, String answer1, String answer2, String answer3, String answer4) {
+	public QtAnswer(int id, int qtCode, String qtName, int qtNo, String answer1, String answer2, String answer3, String answer4, int columns) {
 		super();
 		this.id = id;
 		this.qtCode = qtCode;
@@ -29,6 +30,7 @@ public class QtAnswer implements Serializable{
 		this.answer2 = answer2;
 		this.answer3 = answer3;
 		this.answer4 = answer4;
+		this.columns = columns;
 	}
 
 	public int getId() {
@@ -66,11 +68,16 @@ public class QtAnswer implements Serializable{
 	public int getQtCode() {
 		return qtCode;
 	}
+	
+	public int getColumns() {
+		return columns;
+	}
 
 	@Override
 	public String toString() {
 		return "QtAnswer [id=" + id + ", qtCode=" + qtCode + ", qtName=" + qtName + ", qtNo=" + qtNo + ", answer1="
-				+ answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + "]";
+				+ answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", columns="
+				+ columns + "]";
 	}
 
 	@Override
@@ -81,6 +88,7 @@ public class QtAnswer implements Serializable{
 		result = prime * result + ((answer2 == null) ? 0 : answer2.hashCode());
 		result = prime * result + ((answer3 == null) ? 0 : answer3.hashCode());
 		result = prime * result + ((answer4 == null) ? 0 : answer4.hashCode());
+		result = prime * result + columns;
 		result = prime * result + id;
 		result = prime * result + qtCode;
 		result = prime * result + ((qtName == null) ? 0 : qtName.hashCode());
@@ -117,6 +125,8 @@ public class QtAnswer implements Serializable{
 				return false;
 		} else if (!answer4.equals(other.answer4))
 			return false;
+		if (columns != other.columns)
+			return false;
 		if (id != other.id)
 			return false;
 		if (qtCode != other.qtCode)
@@ -129,6 +139,6 @@ public class QtAnswer implements Serializable{
 		if (qtNo != other.qtNo)
 			return false;
 		return true;
-	}	
+	}
 	
 }

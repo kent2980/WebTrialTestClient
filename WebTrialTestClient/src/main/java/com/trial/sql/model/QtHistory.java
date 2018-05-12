@@ -1,9 +1,14 @@
 package com.trial.sql.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class QtHistory {
+public class QtHistory implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String timeStamp;
 	private int qtCode;
 	private int qtNo;
@@ -13,6 +18,8 @@ public class QtHistory {
 	private String answer4;
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	private int answerCount;
+	
+	public QtHistory() {}
 	
 	public QtHistory(LocalDateTime timeStamp, int qtCode, int qtNo,String answer1, String answer2, String answer3, String answer4) {
 		super();		
