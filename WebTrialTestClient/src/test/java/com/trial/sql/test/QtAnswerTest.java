@@ -15,5 +15,11 @@ public class QtAnswerTest {
 		qtList.stream()
 			  .filter(s -> s.getQtCode() == 11)
 			  .forEach(System.out::println);
+		
+		System.out.println("解答数を返す");
+		
+		qtList.stream()
+			  .map(s -> s.getAnswerCount())
+			  .forEach(System.out::println);
 	}
 }

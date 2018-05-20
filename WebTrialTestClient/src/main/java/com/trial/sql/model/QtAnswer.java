@@ -1,6 +1,8 @@
 package com.trial.sql.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class QtAnswer implements Serializable{
 	/**
@@ -16,7 +18,9 @@ public class QtAnswer implements Serializable{
 	private String answer2;
 	private String answer3;
 	private String answer4;
+	private final List<String> answerList = new ArrayList<>();
 	private int columns;
+	private int answerCount;
 	
 	public QtAnswer() {}
 
@@ -31,6 +35,8 @@ public class QtAnswer implements Serializable{
 		this.answer3 = answer3;
 		this.answer4 = answer4;
 		this.columns = columns;
+		this.answerCount = setAnswerCount();
+		answerList.add(answer1);answerList.add(answer2);answerList.add(answer3);answerList.add(answer4);
 	}
 
 	public int getId() {
@@ -73,11 +79,25 @@ public class QtAnswer implements Serializable{
 		return columns;
 	}
 
-	@Override
-	public String toString() {
-		return "QtAnswer [id=" + id + ", qtCode=" + qtCode + ", qtName=" + qtName + ", qtNo=" + qtNo + ", answer1="
-				+ answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", columns="
-				+ columns + "]";
+	private int setAnswerCount() {
+		int i = 0;
+		if(answer1.length()>0) {
+			i++;
+		}
+		if(answer2.length()>0) {
+			i++;
+		}
+		if(answer3.length()>0) {
+			i++;
+		}
+		if(answer4.length()>0) {
+			i++;
+		}
+		return i;
+	}
+
+	public int getAnswerCount() {
+		return answerCount;
 	}
 
 	@Override
@@ -88,6 +108,7 @@ public class QtAnswer implements Serializable{
 		result = prime * result + ((answer2 == null) ? 0 : answer2.hashCode());
 		result = prime * result + ((answer3 == null) ? 0 : answer3.hashCode());
 		result = prime * result + ((answer4 == null) ? 0 : answer4.hashCode());
+		result = prime * result + answerCount;
 		result = prime * result + columns;
 		result = prime * result + id;
 		result = prime * result + qtCode;
@@ -125,6 +146,8 @@ public class QtAnswer implements Serializable{
 				return false;
 		} else if (!answer4.equals(other.answer4))
 			return false;
+		if (answerCount != other.answerCount)
+			return false;
 		if (columns != other.columns)
 			return false;
 		if (id != other.id)
@@ -140,5 +163,15 @@ public class QtAnswer implements Serializable{
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "QtAnswer [id=" + id + ", qtCode=" + qtCode + ", qtName=" + qtName + ", qtNo=" + qtNo + ", answer1="
+				+ answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", columns="
+				+ columns + ", answerCount=" + answerCount + "]";
+	}
+
+	public List<String> getAnswerList() {
+		return answerList;
+	}
 }
